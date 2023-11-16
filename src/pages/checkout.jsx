@@ -1,9 +1,12 @@
 import Footer from "../components/Footer"
 import SearchBar from "../components/SearchBar"
-
+import { useCarrito } from "../CarritoContext";
 let cover = "https://www.chordie.com/images/no-cover.png";
 
 export default function Checkout(){
+
+    const { carrito } = useCarrito();
+
     return (
         <>
             <div className="bg-imagenFondo bg-center bg-no-repeat bg-cover">
@@ -51,6 +54,11 @@ export default function Checkout(){
                         </div>
 
                         <button className="bg-slate-400 rounded text-2xl font-robotoSlab p-1 text-black">Pagar</button>
+                        {carrito.map((libro) => (
+                        <li key={libro.id}>
+                            {libro.titulo || libro.volumeInfo.title}
+                        </li>
+                        ))}
                     </div>
                 </div>
             </div>

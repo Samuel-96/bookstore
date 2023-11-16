@@ -2,11 +2,11 @@ import PortadaLibro1 from "../assets/wof-cover.jpg"
 import LogoWeb from "../assets/logo.png"
 import {getLibrosPorCategoria} from "../api/api";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function LibrosCategoria({categoria}){
     const navigate = useNavigate();
-    const [libros, setLibros] = useState([]);
+
     /*
     useEffect(() => {
         const fetchLibros = async () => {
@@ -24,7 +24,14 @@ export default function LibrosCategoria({categoria}){
       */
 
     function handleClick(libro){
-        navigate(`/detalleLibro/${libro}`)
+        navigate(
+            `/detalleLibro/${libro.id}`,
+            {
+              state: {
+                libro
+              }
+            }
+          )
     }
 
     return(
@@ -40,23 +47,11 @@ export default function LibrosCategoria({categoria}){
                         return <p key={libro.id}>{libro.volumeInfo.title}</p>
                     })}
                 */}
-                <div className="flex flex-col items-center" onClick={() => handleClick(1)}>
+                <div className="flex flex-col items-center" onClick={() => handleClick({id: 1, titulo: "el camino de los reyes", portada: PortadaLibro1})}>
                     <img className="h-48 w-40 rounded" src={PortadaLibro1} alt="" />
                     <p>El camino de los reyes</p>
                 </div>
-                <div className="flex flex-col items-center">
-                    <img className="h-48 w-40 rounded" src={PortadaLibro1} alt="" />
-                    <p>El camino de los reyes</p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img className="h-48 w-40 rounded" src={PortadaLibro1} alt="" />
-                    <p>El camino de los reyes </p>
-                </div>
-                <div className="flex flex-col items-center">
-                    <img className="h-48 w-40 rounded" src={PortadaLibro1} alt="" />
-                    <p>El camino de los reyes</p>
-                </div>
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center" onClick={() => handleClick({id: 2, titulo: "asdfasdf", portada: LogoWeb})}>
                     <img className="h-48 w-40 rounded" src={PortadaLibro1} alt="" />
                     <p>El camino de los reyes</p>
                 </div>

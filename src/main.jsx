@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SearchResults from './pages/searchResults.jsx';
 import LibroDetalle from './pages/libroDetalle.jsx';
 import Checkout from './pages/checkout.jsx';
+import { CarritoProvider } from './CarritoContext.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,16 +23,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/detalleLibro/:id",
-    element: <LibroDetalle />,
+    element:  <LibroDetalle />,
   },
   {
     path: "/cesta",
-    element: <Checkout />,
+    element: <Checkout/>,
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <CarritoProvider>
     <RouterProvider router={router} />
+    </CarritoProvider>
   </React.StrictMode>
 );
