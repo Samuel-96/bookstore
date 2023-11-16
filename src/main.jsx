@@ -5,6 +5,7 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SearchResults from './pages/searchResults.jsx';
 import LibroDetalle from './pages/libroDetalle.jsx';
+import Checkout from './pages/checkout.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,14 @@ const router = createBrowserRouter([
   {
     path: "/buscar/detalleLibro/:id",
     element: <LibroDetalle />,
+  },
+  {
+    path: "/detalleLibro/:id",
+    element: <LibroDetalle />,
+  },
+  {
+    path: "/cesta",
+    element: <Checkout />,
   },
 ]);
 

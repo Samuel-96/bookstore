@@ -13,6 +13,10 @@ export default function SearchBar(){
         navigate(`/buscar?q=${terminoBuscar}`);
     }
 
+    function handleCarrito(){
+        navigate("/cesta");
+    }
+
     return (
         <nav className="flex flex-wrap items-center justify-evenly font-robotoSlab ">
             {/** LOGO + NOMBRE WEB */}
@@ -38,7 +42,7 @@ export default function SearchBar(){
                     <img className="h-7 w-7 mr-3" src={Lupa} alt="buscar" onClick={handleBuscar}/>
                 </div>
                 {/** CARRITO */}
-                <div className="flex text-xl rounded-lg w-full items-center bg-fondoBoton p-2">
+                <div className="flex text-xl rounded-lg w-full items-center bg-fondoBoton p-2" onClick={handleCarrito}>
                     <button className="ml-5 mr-5">Mi carrito</button>
                     <img className="h-6 w-7" src={Carrito} alt="carrito compra" />
                 </div>

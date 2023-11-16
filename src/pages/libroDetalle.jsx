@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
+import { useState } from 'react';
 
 let cover = "https://www.chordie.com/images/no-cover.png";
 
