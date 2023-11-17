@@ -14,7 +14,7 @@ async function getLibrosPorCategoria(categoria){
 
 async function getLibro(libro){
     try {
-        const response = await fetch(`${baseUrl}?q=${libro}&key=${apiKey}&fields=items(id,volumeInfo)&maxResults=1`);
+        const response = await fetch(`${baseUrl}?q=${libro}&key=${apiKey}&fields=items(id,volumeInfo)&maxResults=10`);
         const data = await response.json();
         console.log(data)
         return data.items;

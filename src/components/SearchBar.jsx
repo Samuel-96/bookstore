@@ -18,7 +18,7 @@ export default function SearchBar(){
     }
 
     return (
-        <nav className="flex flex-wrap items-center justify-evenly font-robotoSlab ">
+        <nav className="flex flex-wrap items-center justify-evenly font-robotoSlab">
             {/** LOGO + NOMBRE WEB */}
             <div className="flex items-center gap-4">
                 <Link to="/"><img className="h-28 w-28" src={LogoWeb} alt="logo web" /></Link>

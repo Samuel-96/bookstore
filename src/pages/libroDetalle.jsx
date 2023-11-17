@@ -1,36 +1,62 @@
 import { useLocation, useParams } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCarrito } from '../CarritoContext';
+import LogoWeb from "../assets/logo.png"
+import Footer from '../components/Footer';
+import ImagenFondo from "../assets/background-detail.jpg"
 
-let cover = "https://www.chordie.com/images/no-cover.png";
+let precio;
 
 function LibroDetalle() {
   //const { libro } = useParams();
   const { agregarAlCarrito } = useCarrito();
   const { state } = useLocation();
   console.log(state);
+  const [precio, setPrecio] = useState(0);
+
+  useEffect(() => {
+    function generarPrecio() {
+      const nuevoPrecio = (Math.random() * 25 + 10).toFixed(2);
+      setPrecio(nuevoPrecio);
+    }
+
+    generarPrecio();
+  }, []);
+
+  function handleMuestraGratuita(){
+    window.open(state.libro.volumeInfo.previewLink, "_blank").focus();
+  }
+
   return (
-    <div>
+    <div className='bg-imagenFondo bg-center bg-no-repeat bg-cover'>
         <SearchBar/>
-        <div className='flex p-10 justify-center flex-wrap gap-5'>
+        <div className='flex p-10 justify-center flex-wrap gap-10 shadow-lg m-20 rounded bg-zinc-900 items-center '>
             <div className='flex items-center flex-col gap-3'>
                 <img className="h-56 w-48 rounded mr-3" 
                     src={state.libro.portada || state.libro.volumeInfo.imageLinks.thumbnail} 
                 alt="portada del libro" />
-                <div className='flex flex-col items-center gap-3 text-2xl justify-center'>
-                    <input className='w-10 text-black text-center' type="number" min={1}/>
-                    <button className='bg-red-400 p-2 rounded text-black font-robotoSlab' onClick={() => agregarAlCarrito(state.libro)}>Añadir a la cesta</button>
+                <div className='flex items-center rounded text-green-800 bg-white p-2 gap-1 hover:bg-gray-500 hover:text-white' onClick={handleMuestraGratuita}>
+                    <img className='h-8 w-8' src={LogoWeb} alt="" />
+                    <button>Leer muestra gratuita</button>
                 </div>
             </div>
 
-            <div className='flex flex-col gap-2 max-w-md max-h-64 '>
+            <div className='flex flex-col gap-2 max-w-lg max-h-96 '>
                 <p className='font-bold font-robotoSlab uppercase text-3xl'>{state.libro.titulo || state.libro.volumeInfo.title}</p>
-                <p className='italic text-2xl text-gray-400'>Brandon Sanderson </p>
-                <p>Nova</p>
-                <p className='overflow-hidden whitespace-wrap text-ellipsis'>El camino de los reyes es el primer volumen de «El Archivo de las Tormentas», el resultado de más de una década de construcción y escritura de universos, convertido en una obra maestra de la fantasía contemporánea en diez volúmenes. Con ella, Brandon Sanderson se postula como el autor del género que más lectores está ganando en todo el mundo. Anhelo los días previos a la Última Desolación. Los días en que los Heraldos nos abandonaron y los Caballeros Radiantes se giraron en nuestra contra. Un tiempo en que aún había magia en el mundo y honor en el corazón de los hombres.</p>
+                <p className='italic text-2xl text-gray-400'>Autor: {state.libro.volumeInfo.authors} </p>
+                <p className='italic text-2xl text-gray-400'>Editorial: {state.libro.volumeInfo.publisher}</p>
+                <p className='font-bold'>Número de páginas: {state.libro.volumeInfo.pageCount}</p>
+                <p className='special-box-description p-1'>{state.libro.volumeInfo.description}</p>
+                
+            </div>
+
+            <div className='flex flex-col items-center gap-5 bg-gray-700 p-3 rounded h-fit'>
+                <p className='text-3xl font-robotoSlab'>{precio}€</p>
+                <button className='bg-slate-900 p-2 rounded text-2xl text-white font-robotoSlab hover:bg-white hover:text-black' onClick={() => agregarAlCarrito(state.libro)}>Añadir a la cesta</button>
             </div>
         </div>
+        <Footer/>
     </div>
     
   );
