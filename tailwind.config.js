@@ -13,10 +13,6 @@ export default {
       backgroundColor: {
         "fondoBoton": "#2d3c41",
       },
-
-      backgroundImage: {
-        "imagenFondo": "url('./src/assets/background.png')",
-      },
     },
   },
   plugins: [],

@@ -1,15 +1,12 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import { useEffect, useState } from 'react';
 import { useCarrito } from '../CarritoContext';
 import LogoWeb from "../assets/logo.png"
 import Footer from '../components/Footer';
-import ImagenFondo from "../assets/background-detail.jpg"
-
-let precio;
-
+let cover;
 function LibroDetalle() {
-  //const { libro } = useParams();
+
   const { agregarAlCarrito } = useCarrito();
   const { state } = useLocation();
   console.log(state);
@@ -19,6 +16,7 @@ function LibroDetalle() {
     function generarPrecio() {
       const nuevoPrecio = (Math.random() * 25 + 10).toFixed(2);
       setPrecio(nuevoPrecio);
+      state.libro.precio = parseFloat(nuevoPrecio);
     }
 
     generarPrecio();
@@ -28,13 +26,19 @@ function LibroDetalle() {
     window.open(state.libro.volumeInfo.previewLink, "_blank").focus();
   }
 
+  if(state.libro.volumeInfo.hasOwnProperty("imageLinks")){
+    cover = state.libro.volumeInfo.imageLinks.thumbnail;
+  } else {
+    cover = "https://www.chordie.com/images/no-cover.png"
+  }
+
   return (
-    <div className='bg-imagenFondo bg-center bg-no-repeat bg-cover'>
+    <div className='imagenFondo'>
         <SearchBar/>
         <div className='flex p-10 justify-center flex-wrap gap-10 shadow-lg m-20 rounded bg-zinc-900 items-center '>
             <div className='flex items-center flex-col gap-3'>
                 <img className="h-56 w-48 rounded mr-3" 
-                    src={state.libro.portada || state.libro.volumeInfo.imageLinks.thumbnail} 
+                    src={cover || state.libro.volumeInfo.imageLinks.thumbnail} 
                 alt="portada del libro" />
                 <div className='flex items-center rounded text-green-800 bg-white p-2 gap-1 hover:bg-gray-500 hover:text-white' onClick={handleMuestraGratuita}>
                     <img className='h-8 w-8' src={LogoWeb} alt="" />
@@ -43,7 +47,7 @@ function LibroDetalle() {
             </div>
 
             <div className='flex flex-col gap-2 max-w-lg max-h-96 '>
-                <p className='font-bold font-robotoSlab uppercase text-3xl'>{state.libro.titulo || state.libro.volumeInfo.title}</p>
+                <p className='special-box-description font-bold font-robotoSlab uppercase text-3xl'>{state.libro.titulo || state.libro.volumeInfo.title}</p>
                 <p className='italic text-2xl text-gray-400'>Autor: {state.libro.volumeInfo.authors} </p>
                 <p className='italic text-2xl text-gray-400'>Editorial: {state.libro.volumeInfo.publisher}</p>
                 <p className='font-bold'>Número de páginas: {state.libro.volumeInfo.pageCount}</p>

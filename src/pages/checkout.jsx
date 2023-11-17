@@ -4,12 +4,18 @@ import { useCarrito } from "../CarritoContext";
 let cover = "https://www.chordie.com/images/no-cover.png";
 
 export default function Checkout(){
+    const { carrito, eliminarDelCarrito } = useCarrito();
+    let cantidadTotal = 0;
 
-    const { carrito } = useCarrito();
+    carrito.forEach((libro) => {
+        cantidadTotal += libro.precio;
+    })
+
+    cantidadTotal = cantidadTotal.toFixed(2);
 
     return (
         <>
-            <div className="bg-imagenFondo bg-center bg-no-repeat bg-cover">
+            <div className="imagenFondo">
                 <SearchBar/>
 
                 <div className="flex flex-wrap justify-evenly gap-20 m-10 items-center">
@@ -20,7 +26,8 @@ export default function Checkout(){
                             <img className="h-44 w-36 rounded mb-3" src={libro.volumeInfo.imageLinks.thumbnail || cover} alt="portada del libro" />
                             <div className="flex flex-col justify-between items-center">
                                 <p className="text-3xl font-robotoSlab">{libro.volumeInfo.title}</p>
-                                <button className="p-2 bg-slate-500 rounded">Eliminar libro</button>
+                                <p>{libro.precio}</p>
+                                <button className="p-2 bg-slate-500 rounded" onClick={() => eliminarDelCarrito(libro.id)}>Eliminar libro</button>
                             </div>
                         </div>
                         ))}
@@ -35,7 +42,7 @@ export default function Checkout(){
                                 <div>
                                     <div className="flex justify-between">
                                         <p>Subtotal</p>
-                                        <p>123€</p>
+                                        <p>{cantidadTotal}</p>
                                     </div>
                                     <div className="flex justify-between">
                                         <p>Gastos de envío</p>
@@ -43,7 +50,7 @@ export default function Checkout(){
                                     </div>
                                 </div>
                                 
-                                <div className="flex justify-between"><p>Total</p><p>100€</p></div>
+                                <div className="flex justify-between"><p>Total</p><p>{cantidadTotal}€</p></div>
                             </div>
                         </div>
 

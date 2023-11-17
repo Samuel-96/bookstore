@@ -10,7 +10,11 @@ export const CarritoProvider = ({ children }) => {
     setCarrito((prevCarrito) => [...prevCarrito, libro]);
   };
 
-  const value = { carrito, agregarAlCarrito };
+  const eliminarDelCarrito = (id) => {
+    setCarrito((prevCarrito) => prevCarrito.filter(item => item.id !== id));
+  };
+
+  const value = { carrito, agregarAlCarrito, eliminarDelCarrito };
 
   return (
     <CarritoContext.Provider value={value}>
