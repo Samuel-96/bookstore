@@ -35,7 +35,8 @@ function LibroDetalle() {
   return (
     <div className='imagenFondo'>
         <SearchBar/>
-        <div className='flex p-10 justify-center flex-wrap gap-10 shadow-lg m-20 rounded bg-zinc-900 items-center '>
+        <div className='flex items-center justify-center'>
+        <div className='flex p-10 justify-center flex-wrap gap-10 shadow-lg m-20 rounded bg-zinc-900 items-center max-w-fit'>
             <div className='flex items-center flex-col gap-3'>
                 <img className="h-56 w-48 rounded mr-3" 
                     src={cover || state.libro.volumeInfo.imageLinks.thumbnail} 
@@ -59,6 +60,7 @@ function LibroDetalle() {
                 <p className='text-3xl font-robotoSlab'>{precio}€</p>
                 <button className='bg-slate-900 p-2 rounded text-2xl text-white font-robotoSlab hover:bg-white hover:text-black' onClick={() => agregarAlCarrito(state.libro)}>Añadir a la cesta</button>
             </div>
+        </div>
         </div>
         <Footer/>
     </div>

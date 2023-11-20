@@ -43,7 +43,7 @@ function SearchResults() {
 
   return (
 
-    <div className=''>
+    <div className='fadeIn'>
       <div className='imagenFondo'>
         <SearchBar/>
 
@@ -79,22 +79,3 @@ function SearchResults() {
 }
 
 export default SearchResults;
-
-/**
-
-{libros.map((libro)=> {
-        //return <p key={libro.id}>{libro.volumeInfo.title}</p>
-        if(libro.volumeInfo.hasOwnProperty("imageLinks")){
-          cover = libro.volumeInfo.imageLinks.thumbnail;
-        } else {
-          cover = "https://www.chordie.com/images/no-cover.png"
-        }
-        return(
-            <div key={libro.id} className="flex flex-col items-center">
-                    <img className="h-36 w-28 rounded" src={cover} alt="portada del libro" />
-                    <p>{libro.volumeInfo.title}</p>
-            </div>
-        )
-      })}
-
- */

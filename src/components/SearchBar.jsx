@@ -1,7 +1,7 @@
 import LogoWeb from "../assets/logo.png"
 import Carrito from "../assets/carrito.png"
 import Lupa from "../assets/search.png"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useNavigate, Link } from "react-router-dom";
 import { useCarrito } from "../CarritoContext";
 
@@ -10,8 +10,22 @@ export default function SearchBar(){
     const [terminoBuscar, setTerminoBuscar] = useState("");
     const navigate = useNavigate();
 
+    const [animate, setAnimate] = useState(false);
     const carritoLibros = carrito.length;
-    
+
+    useEffect(() => {
+
+        setAnimate(true);
+
+        const timeoutId = setTimeout(() => {
+        setAnimate(false);
+        }, 700);
+
+        return () => clearTimeout(timeoutId);
+    }, [carritoLibros]);
+
+
+
     console.log("Libros en el carrito: " + carritoLibros)
     function handleBuscar(){
         navigate(`/buscar?q=${terminoBuscar}`);
@@ -26,7 +40,7 @@ export default function SearchBar(){
             {/** LOGO + NOMBRE WEB */}
             <div className="flex items-center gap-4">
                 <Link to="/"><img className="h-28 w-28" src={LogoWeb} alt="logo web" /></Link>
-                <Link to="/"><p className="text-5xl">BookHub</p></Link>
+                <Link to="/"><p className="text-5xl border-b-8 border-blue-300 pb-1">BookHub</p></Link>
             </div>
 
             <div className="flex gap-2 items-center cursor-pointer">
@@ -49,7 +63,13 @@ export default function SearchBar(){
                 <div className="flex text-xl rounded-lg w-full items-center bg-fondoBoton p-2" onClick={handleCarrito}>
                     <img className="h-6 w-7" src={Carrito} alt="carrito compra" />
                     <button className="ml-5 mr-5">Mi carrito</button>
-                    <p className="w-6 h-6 flex items-center justify-center bg-green-700 z-10 absolute rounded-full -mt-5 ml-3 ">{carritoLibros}</p>
+                    <p
+        className={`w-6 h-6 flex items-center justify-center bg-green-700 z-10 absolute rounded-full -mt-5 ml-3 ${
+          animate ? 'animated-badge' : ''
+        }`}
+      >
+        {carritoLibros}
+      </p>
                 </div>
             </div>
         </nav>

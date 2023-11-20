@@ -15,7 +15,7 @@ export default function Checkout(){
 
     return (
         <>
-            <div className="imagenFondo">
+            <div className="imagenFondo fadeIn">
                 <SearchBar/>
 
                 <div className="flex flex-wrap justify-evenly gap-20 m-10 items-center">

@@ -29,7 +29,7 @@ export default function Footer(){
                         <img src={LogoWeb} alt="" />
                     </div>
 
-                    <a href="https://github.com/Samuel-96" target="blank" className="copyright font-robotoSlab">Samuel-96</a>
+                    <a href="https://github.com/Samuel-96" target="blank" className="copyright font-robotoSlab">GitHub: Samuel-96</a>
                 </div>
                 
         </footer>
