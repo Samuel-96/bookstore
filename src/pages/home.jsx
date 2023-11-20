@@ -5,11 +5,16 @@ import PortadaLibro2 from "../assets/got-cover.jpg"
 import PortadaLibro3 from "../assets/ce-cover.jpg"
 import PortadaLibro4 from "../assets/dracula-cover.jpg"
 import LibrosCategoria from "../components/LibrosCategoria"
+import Viajes from "../assets/viajes.png"
+import Sword from "../assets/sword.png"
+import Manga from "../assets/manga.png"
+import Ciencia from "../assets/ciencia.png"
+import Fiction from "../assets/fiction.png"
 import Footer from "../components/Footer"
 
 export default function Home(){
 
-    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("fantasy");
+    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState({categoria: "fantasy", img: Sword});
 
     return (
         <>
@@ -34,13 +39,28 @@ export default function Home(){
                 </div>
 
                  {/** PARTE INTERMEDIA */}
-                <div className="bg-slate-300 text-black flex flex-col text-xl">
+                <div className="bg-slate-600 text-black flex flex-col text-2xl">
                 <ul className="flex items-center justify-evenly m-1 font-robotoSlab">
-                    <li className="hover:bg-slate-400 p-3 cursor-pointer" onClick={() => setCategoriaSeleccionada("fantasy")}>Fantasía</li>
-                    <li className="hover:bg-slate-400 p-3 cursor-pointer" onClick={() => setCategoriaSeleccionada("Ficcion")}>Ficción</li>
-                    <li className="hover:bg-slate-400 p-3 cursor-pointer" onClick={() => setCategoriaSeleccionada("Manga")}>Manga</li>
-                    <li className="hover:bg-slate-400 p-3 cursor-pointer" onClick={() => setCategoriaSeleccionada("Viajes")}>Viajes</li>
-                    <li className="hover:bg-slate-400 p-3 cursor-pointer" onClick={() => setCategoriaSeleccionada("Ciencia")}>Ciencia</li>
+                    <div className="flex gap-3 justify-center items-center w-full">
+                        <img className="h-10 w-10" src={Sword} alt="" />
+                        <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "fantasy", img: Sword})}>Fantasía</li>
+                    </div>
+                    <div className="flex gap-3 justify-center items-center w-full">
+                        <img className="h-10 w-10" src={Fiction} alt="" />
+                        <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "Ficcion", img: Fiction})}>Ficción</li>
+                    </div>
+                    <div className="flex gap-3 justify-center items-center w-full">
+                        <img className="h-10 w-10" src={Manga} alt="" />
+                        <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "Manga", img: Manga})}>Manga</li>
+                    </div>
+                    <div className="flex gap-3 justify-center items-center w-full">
+                        <img className="h-10 w-10" src={Viajes} alt="" />
+                        <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "Viajes", img: Viajes})}>Viajes</li>
+                    </div>
+                    <div className="flex gap-3 justify-center items-center w-full">
+                        <img className="h-10 w-10" src={Ciencia} alt="" />
+                        <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "Ciencia", img: Ciencia})}>Ciencia</li>
+                    </div>              
                 </ul>
                 
                 <div className="bg-zinc-900 m-3 rounded-3xl shadow-2xl text-white">

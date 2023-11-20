@@ -16,7 +16,7 @@ export default function LibrosCategoria({categoria}){
     useEffect(() => {
         const fetchLibros = async () => {
           try {
-            const librosCategoria = await getLibrosPorCategoria(categoria);
+            const librosCategoria = await getLibrosPorCategoria(categoria.categoria);
             setLibros(librosCategoria || []);
             setCargando(false);
           } catch (error) {
@@ -25,7 +25,7 @@ export default function LibrosCategoria({categoria}){
           }
         };
         fetchLibros();
-      }, [categoria]);
+      }, [categoria.categoria]);
     
 
     function handleClick(libro){
@@ -43,8 +43,8 @@ export default function LibrosCategoria({categoria}){
         <div className="m-10 flex flex-col items-center">    
         {cargando && <div className='flex items-center justify-center'><Loading></Loading></div>}
             <div className="flex items-center m-5 gap-3">
-                <img className="h-10 w-10" src={LogoWeb} alt="logo web" />
-                <h2 className="font-robotoSlab text-xl uppercase">{categoria}</h2>
+                <img className="h-10 w-10" src={categoria.img} alt="logo web" />
+                <h2 className="font-robotoSlab text-xl uppercase">{categoria.categoria}</h2>
             </div>
             
             <div className="grid grid-cols-5 gap-10 text-xl font-robotoSlab">
@@ -57,7 +57,7 @@ export default function LibrosCategoria({categoria}){
             cover = "https://www.chordie.com/images/no-cover.png"
           }
           return(
-            <div key={libro.id} className="flex flex-col items-center ">
+            <div key={libro.id} className="flex flex-col items-center text-center">
               <img className="h-44 w-36 rounded mb-3 transform hover:scale-110 transition-transform cursor-pointer" 
                   src={cover} 
                   alt="portada del libro" 

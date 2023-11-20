@@ -8,7 +8,7 @@ export default function Checkout(){
     let cantidadTotal = 0;
 
     carrito.forEach((libro) => {
-        cantidadTotal += libro.precio;
+        cantidadTotal += libro.precio * libro.cantidad;
     })
 
     cantidadTotal = cantidadTotal.toFixed(2);
@@ -22,12 +22,14 @@ export default function Checkout(){
                     <div className="flex flex-col m-5 p-5">
 
                         {carrito.map((libro) => (
-                        <div key={libro.id} className="flex gap-5 max-w-3xl mb-20 border-b-2 pb-2">
+                        <div key={libro.id} className="flex gap-5 bg-gray-700 rounded p-3 max-w-3xl mb-20 border-b-2 pb-2">
                             <img className="h-44 w-36 rounded mb-3" src={libro.volumeInfo.imageLinks.thumbnail || cover} alt="portada del libro" />
-                            <div className="flex flex-col justify-between items-center">
+                            <div className="flex flex-col justify-between">
                                 <p className="text-3xl font-robotoSlab">{libro.volumeInfo.title}</p>
-                                <p>{libro.precio}</p>
-                                <button className="p-2 bg-slate-500 rounded" onClick={() => eliminarDelCarrito(libro.id)}>Eliminar libro</button>
+                                <p className="bold text-gray-400 text-xl">Precio: {libro.precio}</p>
+                                <p className="bold text-gray-400 text-xl">Cantidad: {libro.cantidad}</p>
+                                <div><button className="p-2 w-4xl rounded bg-red-800 text-white font-robotoSlab" onClick={() => eliminarDelCarrito(libro.id)}>Eliminar libro</button>
+                            </div>    
                             </div>
                         </div>
                         ))}
@@ -54,7 +56,7 @@ export default function Checkout(){
                             </div>
                         </div>
 
-                        <button className="bg-slate-400 rounded text-2xl font-robotoSlab p-1 text-black">Pagar</button>
+                        <button className="bg-slate-400 rounded text-2xl font-robotoSlab p-1 text-black hover:bg-green-700 hover:text-white">Pagar</button>
                         
                     </div>
                 </div>

@@ -34,7 +34,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <CarritoProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </CarritoProvider>
   </React.StrictMode>
 );

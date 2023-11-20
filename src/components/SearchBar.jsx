@@ -3,12 +3,16 @@ import Carrito from "../assets/carrito.png"
 import Lupa from "../assets/search.png"
 import { useState } from "react"
 import { useNavigate, Link } from "react-router-dom";
+import { useCarrito } from "../CarritoContext";
 
 export default function SearchBar(){
-
+    const { carrito } = useCarrito();
     const [terminoBuscar, setTerminoBuscar] = useState("");
     const navigate = useNavigate();
 
+    const carritoLibros = carrito.length;
+    
+    console.log("Libros en el carrito: " + carritoLibros)
     function handleBuscar(){
         navigate(`/buscar?q=${terminoBuscar}`);
     }
@@ -43,8 +47,9 @@ export default function SearchBar(){
                 </div>
                 {/** CARRITO */}
                 <div className="flex text-xl rounded-lg w-full items-center bg-fondoBoton p-2" onClick={handleCarrito}>
-                    <button className="ml-5 mr-5">Mi carrito</button>
                     <img className="h-6 w-7" src={Carrito} alt="carrito compra" />
+                    <button className="ml-5 mr-5">Mi carrito</button>
+                    <p className="w-6 h-6 flex items-center justify-center bg-green-700 z-10 absolute rounded-full -mt-5 ml-3 ">{carritoLibros}</p>
                 </div>
             </div>
         </nav>
