@@ -7,27 +7,33 @@ import SearchResults from './pages/searchResults.jsx';
 import LibroDetalle from './pages/libroDetalle.jsx';
 import Checkout from './pages/checkout.jsx';
 import { CarritoProvider } from './CarritoContext.jsx';
+import ErrorPage from './pages/errorPage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/buscar",
     element: <SearchResults />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/buscar/detalleLibro/:id",
     element: <LibroDetalle />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/detalleLibro/:id",
     element:  <LibroDetalle />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/cesta",
     element: <Checkout/>,
+    errorElement: <ErrorPage />,
   },
 ]);
 
