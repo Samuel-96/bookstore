@@ -66,6 +66,14 @@ body {
   background-size: cover;
 }
 
+.fondoDetalle{
+  background: url(./assets/background-detail.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .animacionBoton {
   box-shadow: inset 0 0 0 0 #2e2d79;
   color: black;

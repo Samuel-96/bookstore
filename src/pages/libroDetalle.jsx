@@ -2,14 +2,17 @@ import { useLocation } from 'react-router-dom';
 import SearchBar from '../components/SearchBar';
 import { useEffect, useState } from 'react';
 import { useCarrito } from '../CarritoContext';
+import FichaTecnica from '../components/FichaTecnica';
 import LogoWeb from "../assets/logo.png"
 import Footer from '../components/Footer';
+
 let cover;
 function LibroDetalle() {
 
   const { agregarAlCarrito } = useCarrito();
   const { state } = useLocation();
-  console.log(state);
+  const date = new Date().getDate() + 1;
+  const mes = new Date().getMonth();
   const [precio, setPrecio] = useState(0);
 
   useEffect(() => {
@@ -33,10 +36,10 @@ function LibroDetalle() {
   }
 
   return (
-    <div className='imagenFondo'>
+    <div className='fondoDetalle'>
         <SearchBar/>
         <div className='flex items-center justify-center'>
-        <div className='flex p-10 justify-center flex-wrap gap-10 shadow-lg m-20 rounded bg-zinc-900 items-center max-w-fit'>
+        <div className='flex p-10 justify-center flex-wrap gap-10 shadow-xl m-20 rounded bg-zinc-900 items-center max-w-fit'>
             <div className='flex items-center flex-col gap-3'>
                 <img className="h-56 w-48 rounded mr-3" 
                     src={cover || state.libro.volumeInfo.imageLinks.thumbnail} 
@@ -56,13 +59,25 @@ function LibroDetalle() {
                 
             </div>
 
-            <div className='flex flex-col items-center gap-5 bg-gray-700 p-3 rounded h-fit'>
-                <p className='text-3xl font-robotoSlab'>{precio}€</p>
-                <button className='bg-slate-900 p-2 rounded text-2xl text-white font-robotoSlab hover:bg-white hover:text-black' onClick={() => agregarAlCarrito(state.libro)}>Añadir a la cesta</button>
+            <div className='flex flex-col gap-5 bg-gray-700 p-3 rounded h-fit'>
+                <div className='flex items-center justify-between'>
+                  <p className='text-3xl font-robotoSlab'>{precio}€</p>
+                  <p>Envío gratis</p>
+                </div>
+                <div className='flex items-center gap-2'>
+                  <p className='p-2 bg-gray-300 text-black font-bold'>Tapa blanda</p>
+                  <p className='p-2 bg-gray-300 text-black font-bold'>Tapa dura</p>
+                  <p className='p-2 bg-gray-300 text-black font-bold'>Digital</p>
+                </div>
+                <p>¡Recíbelo mañana {date}/{mes}!</p>
+                <button className='bg-emerald-700 p-2 rounded text-2xl text-white font-robotoSlab hover:bg-white hover:text-black' onClick={() => agregarAlCarrito(state.libro)}>Añadir a la cesta</button>
             </div>
         </div>
         </div>
-        <Footer/>
+        <FichaTecnica libro={state.libro}/>
+        <div className='bg-fondoBoton'>
+          <Footer/>
+        </div>
     </div>
     
   );

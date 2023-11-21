@@ -44,14 +44,14 @@ function SearchResults() {
   return (
 
     <div className='fadeIn'>
-      <div className='imagenFondo'>
+      <div className='fondoDetalle'>
         <SearchBar/>
 
         <div className='flex items-center flex-col m-5'>
         <h1 className='text-2xl'>{libros.length} Resultados de búsqueda para <b>{libroBuscado}</b></h1>
       </div>
       {cargando && <div className='flex items-center justify-center'><Loading></Loading></div>}
-      <div className='grid grid-cols-5 gap-8 p-8 m-3 rounded items-center'>
+      <div className='grid grid-cols-5 gap-8 m-5 justify-center rounded items-center'>
         
         {libros.map((libro)=> {
           //return <p key={libro.id}>{libro.volumeInfo.title}</p>
@@ -61,8 +61,8 @@ function SearchResults() {
             cover = "https://www.chordie.com/images/no-cover.png"
           }
           return(
-            <div key={libro.id} className="flex flex-col items-center">
-              <img className="h-44 w-36 rounded mb-3 transform hover:scale-110 transition-transform cursor-pointer" 
+            <div key={libro.id} className="flex flex-col items-center text-center font-robotoSlab text-base">
+              <img className="h-48 w-36 rounded mb-3 transform hover:scale-110 transition-transform cursor-pointer" 
                   src={cover} 
                   alt="portada del libro" 
                   onClick={() => handleClick(libro)}/>
