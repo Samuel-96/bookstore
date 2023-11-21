@@ -5,7 +5,11 @@ export default function FichaTecnica(props){
     
     const paginas = volumeInfo?.pageCount || "0";
     const editorial = volumeInfo?.publisher || " ";
-    const idioma = volumeInfo?.language || " ";
+    let idioma = volumeInfo?.language || " ";
+    switch(idioma){
+        case "es": idioma = "español"; break;
+        case "en": idioma = "inglés"; break;
+    }
     const anyo = volumeInfo?.publishedDate || " ";
     const isbn = volumeInfo?.industryIdentifiers?.[0]?.identifier || "";
     const printType = volumeInfo?.printType || " ";

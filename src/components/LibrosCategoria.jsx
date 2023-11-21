@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Loading from "../components/Loading"
 
-
 let cover = "https://www.chordie.com/images/no-cover.png";
 
 export default function LibrosCategoria({categoria}){
