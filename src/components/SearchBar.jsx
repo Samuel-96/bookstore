@@ -49,7 +49,7 @@ export default function SearchBar(){
                     <input className="w-96 text-xl bg-transparent text-black p-2 rounded-xl outline-none" 
                     value={terminoBuscar} 
                     type="text" 
-                    placeholder="La torre oscura"
+                    placeholder="Buscar por título, autor, ISBN..."
                     onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                           handleBuscar();

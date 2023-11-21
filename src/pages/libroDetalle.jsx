@@ -41,7 +41,7 @@ function LibroDetalle() {
         <div className='flex items-center justify-center'>
         <div className='flex p-10 justify-center flex-wrap gap-10 shadow-xl m-20 rounded bg-zinc-900 items-center max-w-fit'>
             <div className='flex items-center flex-col gap-3'>
-                <img className="h-56 w-48 rounded mr-3" 
+                <img className="h-60 w-48 rounded mr-3" 
                     src={cover || state.libro.volumeInfo.imageLinks.thumbnail} 
                 alt="portada del libro" />
                 <div className='flex items-center rounded text-green-800 bg-white p-2 gap-1 hover:bg-gray-500 hover:text-white' onClick={handleMuestraGratuita}>

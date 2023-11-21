@@ -7,7 +7,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'robotoSlab': ['Roboto Slab', 'sans-serif']
+        'robotoSlab': ['Roboto Slab', 'sans-serif'],
+        "montserrat": ["Montserrat", "sans-serif"],
+        "poppins": ["Poppins", "sans-serif"],
+
       },
 
       backgroundColor: {
