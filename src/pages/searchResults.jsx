@@ -47,11 +47,11 @@ function SearchResults() {
       <div className='fondoDetalle'>
         <SearchBar/>
 
-        <div className='flex items-center flex-col m-5'>
-        <h1 className='text-2xl'>{libros.length} Resultados de búsqueda para <b>{libroBuscado}</b></h1>
-      </div>
+        <div className='md:flex items-center flex-col m-5'>
+          <h1 className='text-2xl'>{libros.length} Resultados de búsqueda para <b>{libroBuscado}</b></h1>
+        </div>
       {cargando && <div className='flex items-center justify-center'><Loading></Loading></div>}
-      <div className='grid grid-cols-5 gap-8 m-5 justify-center rounded items-center'>
+      <div className='md:grid md:grid-cols-5 grid grid-cols-3 gap-8 m-5 pb-5 justify-center rounded items-center'>
         
         {libros.map((libro)=> {
           //return <p key={libro.id}>{libro.volumeInfo.title}</p>
@@ -62,7 +62,7 @@ function SearchResults() {
           }
           return(
             <div key={libro.id} className="flex flex-col items-center text-center font-robotoSlab text-base">
-              <img className="h-48 w-36 rounded mb-3 transform hover:scale-110 transition-transform cursor-pointer" 
+              <img className="md:h-48 md:w-36 rounded mb-3 transform hover:scale-110 transition-transform cursor-pointer" 
                   src={cover} 
                   alt="portada del libro" 
                   onClick={() => handleClick(libro)}/>

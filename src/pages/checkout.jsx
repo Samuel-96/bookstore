@@ -22,13 +22,13 @@ export default function Checkout(){
                     <div className="flex flex-col m-5 p-5">
 
                         {carrito.map((libro) => (
-                        <div key={libro.id} className="flex gap-5 bg-gray-700 rounded p-3 max-w-3xl mb-20 border-b-2 pb-2">
+                        <div key={libro.id} className="flex gap-5 bg-gray-700 rounded p-3 md:max-w-3xl mb-20 border-b-2 pb-2">
                             <img className="h-44 w-36 rounded mb-3" src={libro.volumeInfo.imageLinks.thumbnail || cover} alt="portada del libro" />
                             <div className="flex flex-col justify-between">
-                                <p className="text-3xl font-robotoSlab">{libro.volumeInfo.title}</p>
-                                <p className="bold text-gray-400 text-xl">Precio: {libro.precio}</p>
-                                <p className="bold text-gray-400 text-xl">Cantidad: {libro.cantidad}</p>
-                                <div><button className="p-2 w-4xl rounded bg-red-800 text-white font-robotoSlab" onClick={() => eliminarDelCarrito(libro.id)}>Eliminar libro</button>
+                                <p className="md:text-3xl font-robotoSlab">{libro.volumeInfo.title}</p>
+                                <p className="bold text-gray-400 md:text-xl">Precio: {libro.precio}</p>
+                                <p className="bold text-gray-400 md:text-xl">Cantidad: {libro.cantidad}</p>
+                                <div><button className="md:p-2 md:w-4xl rounded bg-red-800 text-white font-robotoSlab" onClick={() => eliminarDelCarrito(libro.id)}>Eliminar libro</button>
                             </div>    
                             </div>
                         </div>

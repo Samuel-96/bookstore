@@ -16,8 +16,8 @@ export default function FichaTecnica(props){
 
     return(
         <div className="flex items-center gap-3 flex-col m-10">
-            <h1 className="uppercase font-robotoSlab text-3xl border-b-2 pb-2 mb-3">Ficha técnica</h1>
-            <div className="flex items-center text-xl gap-14">
+            <h1 className="uppercase font-robotoSlab md:text-3xl border-b-2 pb-2 mb-3">Ficha técnica</h1>
+            <div className="md:flex items-center md:text-xl md:gap-14 gap-4">
                 <div className="flex flex-col">
                     <div className="flex justify-between gap-10">
                         <p className=""><strong>Nº de páginas:</strong></p>

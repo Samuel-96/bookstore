@@ -39,14 +39,14 @@ export default function LibrosCategoria({categoria}){
     }
 
     return(
-        <div className="m-10 flex flex-col items-center">    
+        <div className="m-10 md:flex md:flex-col items-center">    
         {cargando && <div className='flex items-center justify-center'><Loading></Loading></div>}
             <div className="flex items-center m-5 gap-3">
                 <img className="h-10 w-10" src={categoria.img} alt="logo web" />
                 <h2 className="font-robotoSlab text-xl uppercase">{categoria.categoria}</h2>
             </div>
             
-            <div className="grid grid-cols-5 gap-10 text-xl font-robotoSlab">
+            <div className="grid md:grid-cols-5 grid-cols-2 gap-10 text-xl font-robotoSlab">
                 
             {libros.map((libro)=> {
           //return <p key={libro.id}>{libro.volumeInfo.title}</p>
@@ -57,7 +57,7 @@ export default function LibrosCategoria({categoria}){
           }
           return(
             <div key={libro.id} className="flex flex-col items-center text-center">
-              <img className="h-44 w-36 rounded mb-3 transform hover:scale-110 transition-transform cursor-pointer" 
+              <img className="md:h-44 md:w-36 rounded mb-3 transform hover:scale-110 transition-transform cursor-pointer" 
                   src={cover} 
                   alt="portada del libro" 
                   onClick={() => handleClick(libro)}/>

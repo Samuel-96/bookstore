@@ -25,36 +25,36 @@ export default function Home(){
                 
                 <div className="imagenFondo">
                     <SearchBar/>
-                    <div className="flex p-20 items-center mr-10 ml-10 mt-10 font-robotoSlab w-11/12 justify-between fadeIn">
+                    <div className="md:flex md:p-20 items-center md:mr-10 ml-10 mt-10 font-robotoSlab w-11/12 justify-between fadeIn">
                         <div className="flex flex-col w-1/2 gap-3 font-poppins">
-                            <p className="text-5xl font-robotoSlab">Tu librería de confianza online</p>
-                            <p className="text-2xl">Libros que inspiran, la tienda que transforma</p>
-                            <p className="text-xl">Descubre un universo de posibilidades literarias en nuestra tienda online. Sumérgete en la magia de la lectura desde la comodidad de tu hogar y déjate cautivar por la diversidad de títulos. En cada página, en cada clic, te espera una nueva experiencia literaria. ¡Encuentra tu próxima gran historia con nosotros!</p>
+                            <p className="md:text-5xl text-xl font-robotoSlab">Tu librería de confianza online</p>
+                            <p className="md:text-2xl">Libros que inspiran, la tienda que transforma</p>
+                            <p className="md:text-xl">Descubre un universo de posibilidades literarias en nuestra tienda online. Sumérgete en la magia de la lectura desde la comodidad de tu hogar y déjate cautivar por la diversidad de títulos. En cada página, en cada clic, te espera una nueva experiencia literaria. ¡Encuentra tu próxima gran historia con nosotros!</p>
                         </div>
-                        <div className="flex gap-5">
-                            <img className="h-42 w-36 rounded" src={PortadaLibro1} alt="" />
-                            <img className="h-42 w-36 rounded" src={PortadaLibro2} alt="" />
-                            <img className="h-42 w-36 rounded" src={PortadaLibro3} alt="" />
-                            <img className="h-42 w-36 rounded" src={PortadaLibro4} alt="" />
+                        <div className="md:flex gap-5 hidden">
+                            <img className="md:h-42 md:w-36 rounded" src={PortadaLibro1} alt="" />
+                            <img className="md:h-42 md:w-36 rounded" src={PortadaLibro2} alt="" />
+                            <img className="md:h-42 md:w-36 rounded" src={PortadaLibro3} alt="" />
+                            <img className="md:h-42 md:w-36 rounded" src={PortadaLibro4} alt="" />
                         </div>
                     </div>
 
                     <div className="flex flex-row-reverse p-20 items-center mb-10 mr-10 ml-10 font-robotoSlab w-11/12 justify-between fadeIn">
-                        <div className="flex flex-col w-1/2 gap-3">
-                            <p className="text-5xl text-center">Compra tus libros favoritos, ya sea desde tu móvil o tu ordenador. 📱💻</p>
-                            <ul className="flex flex-col gap-2 list-disc pl-4 font-poppins">
-                                <li className="text-xl">Amplia selección de géneros: desde emocionantes novelas hasta apasionantes libros de ciencia</li>
-                                <li className="text-xl">Encarga pedidos especiales: ¿No encuentras lo que buscas? ¡Lo conseguimos para ti!</li>
-                                <li className="text-xl">Envío rápido y seguro: Recibe tus libros en la puerta de tu casa.</li>
+                        <div className="flex flex-col md:w-1/2 gap-3">
+                            <p className="md:text-5xl text-2xl text-center">Compra tus libros favoritos, ya sea desde tu móvil o tu ordenador. 📱💻</p>
+                            <ul className="md:flex hidden flex-col gap-2 list-disc pl-4 font-poppins">
+                                <li className="md:text-xl">Amplia selección de géneros: desde emocionantes novelas hasta apasionantes libros de ciencia</li>
+                                <li className="md:text-xl">Encarga pedidos especiales: ¿No encuentras lo que buscas? ¡Lo conseguimos para ti!</li>
+                                <li className="md:text-xl">Envío rápido y seguro: Recibe tus libros en la puerta de tu casa.</li>
                             </ul>
                         </div>
                         <div className="flex gap-5">
-                            <img className="h-auto w-max rounded" src={FondoPubli} alt="" />
+                            <img className="md:h-auto md:w-max rounded" src={FondoPubli} alt="" />
                         </div>
                     </div>
 
-                    <h1 className="font-robotoSlab text-4xl text-center uppercase fadeIn">apasionantes géneros entre los que encontrar tu próxima gran lectura</h1>
-                    <div className="flex gap-44 justify-center items-center m-5 font-montserrat fadeIn">
+                    <h1 className="font-robotoSlab md:text-4xl text-center uppercase fadeIn">apasionantes géneros entre los que encontrar tu próxima gran lectura</h1>
+                    <div className="flex md:gap-44 justify-center items-center m-5 font-montserrat fadeIn">
                         
                         <div className="flex flex-col items-center gap-4">
                             <div className="flex flex-col bg-black pt-2 pl-2 rounded-sm min-w-full">
@@ -83,7 +83,7 @@ export default function Home(){
 
                     <div className="flex justify-center m-10 p-2">
                         <div className="flex">
-                            <img className="h-96 w-96" src={Ereader} alt="" />
+                            <img className="md:h-96 md:w-96 h-44 w-44" src={Ereader} alt="" />
                             <div className="flex gap-5 flex-col mt-10">
                                 <p className="font-robotoSlab text-xl uppercase">Lee tus libros preferidos en formato digital</p>
                                 <button className="bg-amber-500 p-2 text-black font-robotoSlab">VER EREADER</button>
@@ -93,30 +93,30 @@ export default function Home(){
                 </div>
 
                 <div>
-                    <h1 className="text-3xl m-5 font-robotoSlab border-b-8 border-blue-300 pb-1">ÚLTIMAS NOVEDADES</h1>
+                    <h1 className="md:text-3xl m-5 font-robotoSlab border-b-8 border-blue-300 pb-1">ÚLTIMAS NOVEDADES</h1>
                 </div>
 
                  {/** PARTE INTERMEDIA */}
-                <div className="bg-zinc-600 text-black flex flex-col text-2xl w-3/4 m-5 rounded-xl">
+                <div className="bg-zinc-600 text-black flex flex-col md:text-2xl md:w-3/4 w-screen md:m-5 rounded-xl">
                     <ul className="flex items-center justify-evenly m-1 font-robotoSlab">
-                        <div className="flex gap-3 justify-center items-center w-full">
-                            <img className="h-10 w-10" src={Sword} alt="" />
+                        <div className="flex md:gap-3 justify-center items-center w-full">
+                            <img className="md:h-10 md:w-10 h-7 w-7" src={Sword} alt="" />
                             <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "fantasy", img: Sword})}>Fantasía</li>
                         </div>
-                        <div className="flex gap-3 justify-center items-center w-full">
-                            <img className="h-10 w-10" src={Fiction} alt="" />
+                        <div className="flex md:gap-3 justify-center items-center w-full">
+                            <img className="md:h-10 md:w-10 h-7 w-7" src={Fiction} alt="" />
                             <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "Ficcion", img: Fiction})}>Ficción</li>
                         </div>
-                        <div className="flex gap-3 justify-center items-center w-full">
-                            <img className="h-10 w-10" src={Manga} alt="" />
+                        <div className="flex md:gap-3 justify-center items-center w-full">
+                            <img className="md:h-10 md:w-10 h-7 w-7" src={Manga} alt="" />
                             <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "Manga", img: Manga})}>Manga</li>
                         </div>
-                        <div className="flex gap-3 justify-center items-center w-full">
-                            <img className="h-10 w-10" src={Viajes} alt="" />
+                        <div className="flex md:gap-3 justify-center items-center w-full">
+                            <img className="md:h-10 md:w-10 h-7 w-7" src={Viajes} alt="" />
                             <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "Viajes", img: Viajes})}>Viajes</li>
                         </div>
-                        <div className="flex gap-3 justify-center items-center w-full">
-                            <img className="h-10 w-10" src={Ciencia} alt="" />
+                        <div className="flex md:gap-3 justify-center items-center w-full">
+                            <img className="md:h-10 md:w-10 h-7 w-7" src={Ciencia} alt="" />
                             <li className="animacionBoton cursor-pointer" onClick={() => setCategoriaSeleccionada({categoria: "Ciencia", img: Ciencia})}>Ciencia</li>
                         </div>              
                     </ul>
