@@ -24,9 +24,6 @@ export default function SearchBar(){
         return () => clearTimeout(timeoutId);
     }, [carritoLibros]);
 
-
-
-    console.log("Libros en el carrito: " + carritoLibros)
     function handleBuscar(){
         navigate(`/buscar?q=${terminoBuscar}`);
     }

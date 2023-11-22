@@ -1,10 +1,15 @@
 import Footer from "../components/Footer"
 import SearchBar from "../components/SearchBar"
 import { useCarrito } from "../CarritoContext";
-let cover = "https://www.chordie.com/images/no-cover.png";
+import { useMemo } from "react";
 
 export default function Checkout(){
     const { carrito, eliminarDelCarrito } = useCarrito();
+
+    const precioTotal = useMemo(() => {
+        return carrito.reduce((total, libro) => total + libro.precio * libro.cantidad, 0);
+    }, [carrito])
+/*
     let cantidadTotal = 0;
 
     carrito.forEach((libro) => {
@@ -12,6 +17,8 @@ export default function Checkout(){
     })
 
     cantidadTotal = cantidadTotal.toFixed(2);
+
+*/
 
     return (
         <>
@@ -21,18 +28,25 @@ export default function Checkout(){
                 <div className="flex flex-wrap justify-evenly gap-20 m-10 items-center">
                     <div className="flex flex-col m-5 p-5">
 
-                        {carrito.map((libro) => (
-                        <div key={libro.id} className="flex gap-5 bg-gray-700 rounded p-3 md:max-w-3xl mb-20 border-b-2 pb-2">
-                            <img className="h-44 w-36 rounded mb-3" src={libro.volumeInfo.imageLinks.thumbnail || cover} alt="portada del libro" />
-                            <div className="flex flex-col justify-between">
-                                <p className="md:text-3xl font-robotoSlab">{libro.volumeInfo.title}</p>
-                                <p className="bold text-gray-400 md:text-xl">Precio: {libro.precio}</p>
-                                <p className="bold text-gray-400 md:text-xl">Cantidad: {libro.cantidad}</p>
-                                <div><button className="md:p-2 md:w-4xl rounded bg-red-800 text-white font-robotoSlab" onClick={() => eliminarDelCarrito(libro.id)}>Eliminar libro</button>
-                            </div>    
+                    {carrito.map((libro) => {
+                        let cover = "https://www.chordie.com/images/no-cover.png";
+
+                        if (libro.volumeInfo && libro.volumeInfo.hasOwnProperty("imageLinks")) {
+                            cover = libro.volumeInfo.imageLinks.thumbnail;
+                        }
+
+                        return (
+                            <div key={libro.id} className="flex gap-5 bg-gray-700 rounded p-3 md:max-w-3xl mb-20 border-b-2 pb-2">
+                                <img className="h-44 w-36 rounded mb-3" src={cover} alt="portada del libro" />
+                                <div className="flex flex-col justify-between">
+                                    <p className="md:text-3xl font-robotoSlab">{libro.volumeInfo.title}</p>
+                                    <p className="bold text-gray-400 md:text-xl">Precio: {libro.precio}</p>
+                                    <p className="bold text-gray-400 md:text-xl">Cantidad: {libro.cantidad}</p>
+                                    <button className="md:p-2 md:w-4xl rounded bg-red-800 text-white font-robotoSlab" onClick={() => eliminarDelCarrito(libro.id)}>Eliminar libro</button>
+                                </div>
                             </div>
-                        </div>
-                        ))}
+                        );
+                    })}
 
                     </div>
 
@@ -44,7 +58,7 @@ export default function Checkout(){
                                 <div>
                                     <div className="flex justify-between">
                                         <p>Subtotal</p>
-                                        <p>{cantidadTotal}</p>
+                                        <p>{precioTotal}</p>
                                     </div>
                                     <div className="flex justify-between">
                                         <p>Gastos de envío</p>
@@ -52,7 +66,7 @@ export default function Checkout(){
                                     </div>
                                 </div>
                                 
-                                <div className="flex justify-between"><p>Total</p><p>{cantidadTotal}€</p></div>
+                                <div className="flex justify-between"><p>Total</p><p>{precioTotal}€</p></div>
                             </div>
                         </div>
 
